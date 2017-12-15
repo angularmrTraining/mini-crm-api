@@ -1,0 +1,4 @@
+{
+    "DBHost": "mongodb://localhost/mini-crm-test",
+    "PORT": 7000
+}

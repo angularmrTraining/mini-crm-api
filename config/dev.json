@@ -1,0 +1,4 @@
+{
+    "DBHost": "mongodb://localhost/contactsdb-dev",
+    "PORT": 8000
+}
