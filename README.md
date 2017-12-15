@@ -10,3 +10,79 @@
 [![bitHound Code](https://www.bithound.io/github/angularmrTraining/mini-crm-api/badges/code.svg)](https://www.bithound.io/github/angularmrTraining/mini-crm-api)
 
 > Mini CRM API is minimal RESTful API using Express and mongoose to complete the Angular version 5 evaluation home work.
+
+# Start Project
+
+```
+$ git clone https://github.com/angularmrTraining/mini-crm-api
+$ cd mini-crm-api
+$ npm install 
+$ npm run dev
+```
+
+# Run Test 
+
+```
+$ npm run test
+```
+
+# Contact Model
+
+> Contact model schema
+
+```javascript
+{
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
+    },
+    gender: {
+        type: String,
+        enum: ['male', 'female']
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    bio: {
+        type: String
+    },
+    address: {
+        lineOne: {
+            type: String,
+            required: true
+        },
+        lineTwo: {
+            type: String
+        },
+        city: {
+            type: String,
+            require: true
+        },
+        state: {
+            type: String
+        },
+        country: {
+            type: String,
+            required: true
+        },
+        zipCode: {
+            type: String,
+            required: true
+        }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+}
+```
