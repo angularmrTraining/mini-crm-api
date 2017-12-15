@@ -3,9 +3,39 @@
 const Contact = require('../../models/contact');
 
 /**
+ * @apiDefine NotFound
+ * @apiError ContactNotFound The <code>id</code> of the contact was not found.
+ */
+
+/**
  * @api {get} /v1/contacts Retrieve all the contacts
  * @apiName all
  * @apiGroup Contacts
+ * 
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *       {
+ *           "contacts": [
+ *               {
+ *                   "_id": "5a32f84891debf084fc5c31f",
+ *                   "firstName": "Deana",
+ *                   "lastName": "Burks",
+ *                   "gender": "female",
+ *                   "email": "deanaburks@navir.com",
+ *                   "phone": "+212 (802) 419-2721",
+ *                   "bio": "Et velit culpa pariatur esse magna cupidatat id labore id incididunt.",
+ *                   "createdAt": "2017-12-15T02:32:38.275Z",
+ *                   "address": {
+ *                       "lineOne": "Tabor Court",
+ *                       "lineTwo": "Danforth Street, 117",
+ *                       "city": "Beason",
+ *                       "state": "Alaska",
+ *                       "country": "Mauritius",
+ *                       "zipCode": "3535"
+ *                   }
+ *               }
+ *           ]
+ *       }
  */
 
 function getAllContacts(req, res) {
@@ -29,6 +59,31 @@ function getAllContacts(req, res) {
  * @api {post} /v1/contacts Add a new Contact
  * @apiName new
  * @apiGroup Contacts
+ * 
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 201 Created
+ *       {
+ *           "response": "Contact successfully added!",
+ *           "contact": {
+ *               "_id": "5a32f84891debf084fc5c322",
+ *               "firstName": "Debora",
+ *               "lastName": "Dunnald",
+ *               "gender": "female",
+ *               "email": "deboradunn@navir.com",
+ *               "phone": "+212 (807) 553-2272",
+ *               "bio": "Est anim sunt consequat anim ullamco magna mollit mollit irure labore elit anim.",
+ *               "createdAt": "2017-12-14T22:17:18.794Z",
+ *               "address": {
+ *                   "lineOne": "Frank Court",
+ *                   "lineTwo": "Batchelder Street, 361",
+ *                   "city": "Kenmar",
+ *                   "state": "Oregon",
+ *                   "country": "Bangladesh",
+ *                   "zipCode": "1821"
+ *               }
+ *           }
+ *       }
+ * 
  */
 
 function newContact(req, res) {
@@ -60,6 +115,33 @@ function newContact(req, res) {
  * @api {get} /v1/contacts/:id Request a single contact by ID
  * @apiName single
  * @apiGroup Contacts
+ * 
+ * @apiParam {String} id Contact unique ID.
+ * 
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *       {
+ *           "contact": {
+ *               "_id": "5a32f84891debf084fc5c31f",
+ *               "firstName": "Deana",
+ *               "lastName": "Burks",
+ *               "gender": "female",
+ *               "email": "deanaburks@navir.com",
+ *               "phone": "+212 (802) 419-2721",
+ *               "bio": "Et velit culpa pariatur esse magna cupidatat id labore id incididunt.",
+ *               "createdAt": "2017-12-15T02:33:31.141Z",
+ *               "address": {
+ *                   "lineOne": "Tabor Court",
+ *                   "lineTwo": "Danforth Street, 117",
+ *                   "city": "Beason",
+ *                   "state": "Alaska",
+ *                   "country": "Mauritius",
+ *                   "zipCode": "3535"
+ *               }
+ *           }
+ *       }
+ * 
+ * @apiUse NotFound
  */
 function getSingleContact(req, res) {
     Contact.findById(req.params.id, (error, contact) => {
@@ -85,6 +167,20 @@ function getSingleContact(req, res) {
  * @api {delete} /v1/contacts/:id Delete contact by ID
  * @apiName delete
  * @apiGroup Contacts
+ * 
+ * @apiParam {String} id Contact unique ID.
+ * 
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 202 Accepted
+ *       {
+ *           "response": "Contact successfully deleted!",
+ *           "result": {
+ *               "n": 1,
+ *               "ok": 1
+ *           }
+ *       }
+ * 
+ * @apiUse NotFound
  */
 function deleteContact(req, res) {
     Contact.remove({
@@ -111,6 +207,35 @@ function deleteContact(req, res) {
  * @api {put} /v1/contacts/:id Update contact
  * @apiName update
  * @apiGroup Contacts
+ * 
+ * @apiParam {String} id Contact unique ID.
+ * 
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 202 Accepted
+ *      {
+ *          "message": "Contact updated!",
+ *          "contact": {
+ *              "_id": "5a32f84891debf084fc5c322",
+ *              "firstName": "Debora",
+ *              "lastName": "Dunnald",
+ *              "gender": "female",
+ *              "email": "deanaburks@navir.com",
+ *              "phone": "+212 (807) 553-2272",
+ *              "bio": "Est anim sunt consequat anim ullamco magna mollit mollit irure labore elit anim.",
+ *              "createdAt": "2017-12-14T22:17:18.794Z",
+ *              "address": {
+ *                  "lineOne": "Frank Court",
+ *                  "lineTwo": "Batchelder Street, 361",
+ *                  "city": "Kenmar",
+ *                  "state": "Oregon",
+ *                  "country": "Bangladesh",
+ *                  "zipCode": "1821"
+ *              }
+ *          }
+ *      } 
+ * 
+ * @apiUse NotFound
+ * 
  */
 
 function updateContact(req, res) {
