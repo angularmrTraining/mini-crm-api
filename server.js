@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const routes = require('./app/routes');
 const config = require('config');
+const path = require('path');
 
 const port = process.env.PORT || config.PORT || 3000;
 
@@ -49,7 +50,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({
     type: 'application/json'
 }));
-
+//API DOC
+app.use('/doc', express.static(path.join(__dirname, './apidoc')));
 routes(app);
 
 app.listen(port);
