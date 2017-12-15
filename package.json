@@ -5,6 +5,8 @@
     "main": "index.js",
     "scripts": {
         "start": "node server.js",
+        "postinstall": "apidoc -i routes/ -o apidoc/",
+        "apidoc": "apidoc -i routes/api-v3 -o apidoc/",
         "dev": "export NODE_ENV=dev && nodemon server.js",
         "test": "nyc --reporter=html --reporter=text mocha --timeout 10000",
         "coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -12,6 +14,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "apidoc": "0.17.6",
         "body-parser": "1.18.2",
         "config": "1.28.1",
         "express": "4.16.2",
