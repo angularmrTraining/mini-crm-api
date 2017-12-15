@@ -11,6 +11,8 @@
 
 > Mini CRM API is minimal RESTful API using Express and mongoose to complete the Angular version 5 evaluation home work.
 
+> For more details check out [the API doc](https://mini-crm-api.herokuapp.com/doc/)
+
 # Start Project
 
 ```
