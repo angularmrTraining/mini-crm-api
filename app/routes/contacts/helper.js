@@ -8,7 +8,7 @@ const Contact = require('../../models/contact');
  */
 
 /**
- * @api {get} /api/v1/contacts Retrieve all the contacts
+ * @api {get} /api/v1/contacts Retrieve all contacts
  * @apiName all
  * @apiGroup Contacts
  * 
