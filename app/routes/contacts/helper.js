@@ -8,7 +8,7 @@ const Contact = require('../../models/contact');
  */
 
 /**
- * @api {get} /v1/contacts Retrieve all the contacts
+ * @api {get} /api/v1/contacts Retrieve all the contacts
  * @apiName all
  * @apiGroup Contacts
  * 
@@ -56,7 +56,7 @@ function getAllContacts(req, res) {
 }
 
 /**
- * @api {post} /v1/contacts Add a new Contact
+ * @api {post} /api/v1/contacts Add a new Contact
  * @apiName new
  * @apiGroup Contacts
  * 
@@ -112,7 +112,7 @@ function newContact(req, res) {
 }
 
 /**
- * @api {get} /v1/contacts/:id Request a single contact by ID
+ * @api {get} /api/v1/contacts/:id Request a single contact by ID
  * @apiName single
  * @apiGroup Contacts
  * 
@@ -164,7 +164,7 @@ function getSingleContact(req, res) {
 }
 
 /**
- * @api {delete} /v1/contacts/:id Delete contact by ID
+ * @api {delete} /api/v1/contacts/:id Delete contact by ID
  * @apiName delete
  * @apiGroup Contacts
  * 
@@ -204,7 +204,7 @@ function deleteContact(req, res) {
 }
 
 /**
- * @api {put} /v1/contacts/:id Update contact
+ * @api {put} /api/v1/contacts/:id Update contact
  * @apiName update
  * @apiGroup Contacts
  * 
